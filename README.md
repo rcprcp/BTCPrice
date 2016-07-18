@@ -7,4 +7,5 @@ This program requires gson (tested with version 2.6.1), and Jsoup (tested with v
 
 It also needs some work.  
 * the UI is not so nice - probably should delete some columns.  i was over optimistic about what data is available without accounts on the various exchanges.
-* we probably should find additional API-style data and not scrape web pages.  :) 
+* we probably should find additional API-style data and not scrape web pages.  :)
+* need to implement the Kraken parser.
