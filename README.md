@@ -9,4 +9,4 @@ It also needs some work.
 * the UI is not so nice - probably should delete some columns.  i was over optimistic about what data is available in the public APIs of the various exchanges.
 * we probably should find additional API-style data and not scrape web pages.  :)
 * need to implement the Kraken parser (first version done).
-* we need refactoring.  there are some routines (like HTTP connection stuff which is duplicated all over the place.
+* we need refactoring.  there are some routines (like HTTP connection stuff which is duplicated all over the place).
