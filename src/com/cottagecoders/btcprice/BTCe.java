@@ -15,8 +15,6 @@ import java.util.Date;
 
 class BTCe implements DataProvider, Runnable {
 
-    static int b = 1;
-    static int a = 100;
     static JTable table;
     static MyTableModel model;
 
