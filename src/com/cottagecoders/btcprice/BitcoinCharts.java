@@ -4,15 +4,11 @@ import com.google.gson.Gson;
 
 import javax.swing.*;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.ZonedDateTime;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 class BitcoinCharts implements DataProvider, Runnable {
 
@@ -34,43 +30,53 @@ class BitcoinCharts implements DataProvider, Runnable {
     }
 
     public void run() {
+
         table.setValueAt("BitcoinCharts", BTCPrice.ROW_BITCOINCHARTS, BTCPrice.COL_NAME);
         table.setValueAt("Data", BTCPrice.ROW_BITCOINCHARTS, BTCPrice.COL_TYPE);
 
         String URI = "api.bitcoincharts.com";
         int port = 27007;
         BufferedReader br = null;
-        try {
-            Socket ClientSocket = new Socket(URI, port);
-            ClientSocket.setSoTimeout(20000);
+        while(true) {
+            try {
+                Socket ClientSocket = new Socket(URI, port);
+                ClientSocket.setSoTimeout(20000);
 
-            br = new BufferedReader(new InputStreamReader(
-                    ClientSocket.getInputStream()));
+                br = new BufferedReader(new InputStreamReader(
+                        ClientSocket.getInputStream()));
 
-            while (true) {
-                String jsonText = br.readLine();
-                if (jsonText != null) ;
+                while (true) {
+                    String jsonText = br.readLine();
+                    if (jsonText != null) ;
 
-                // first check if it's in USD.
-                if (jsonText.contains("USD")) {
-                    BitcoinChartsObject bcObj = new Gson().fromJson(jsonText, BitcoinChartsObject.class);
+                    // first check if it's in USD.
+                    if (jsonText.contains("USD")) {
+                        BitcoinChartsObject bcObj = new Gson().fromJson(jsonText, BitcoinChartsObject.class);
 
-                    Date dt = new Date(bcObj.getTimestamp()* 1000);
-                    DateFormat fmt = new SimpleDateFormat("HH:mm:ss");
-                    table.setValueAt(fmt.format(dt), BTCPrice.ROW_BITCOINCHARTS, BTCPrice.COL_TIME);
-                    table.setValueAt(bcObj.getPrice(), BTCPrice.ROW_BITCOINCHARTS, BTCPrice.COL_TRADE);
+                        Date dt = new Date(bcObj.getTimestamp() * 1000);
+                        DateFormat fmt = new SimpleDateFormat("HH:mm:ss");
+                        table.setValueAt(fmt.format(dt), BTCPrice.ROW_BITCOINCHARTS, BTCPrice.COL_TIME);
+                        table.setValueAt(bcObj.getPrice(), BTCPrice.ROW_BITCOINCHARTS, BTCPrice.COL_TRADE);
 
-                    String symbol = bcObj.getSymbol().replace("USD", "").toUpperCase();
-                    table.setValueAt(symbol, BTCPrice.ROW_BITCOINCHARTS, BTCPrice.COL_TYPE);
-                    if(BTCPrice.DEBUG)
-                        System.out.println(fmt.format(dt) + ": " + bcObj.getSymbol()+ " " + bcObj.getPrice());
+                        String symbol = bcObj.getSymbol().replace("USD", "").toUpperCase();
+                        table.setValueAt(symbol, BTCPrice.ROW_BITCOINCHARTS, BTCPrice.COL_TYPE);
+                        if (BTCPrice.DEBUG)
+                            System.out.println(fmt.format(dt) + ": " + bcObj.getSymbol() + " " + bcObj.getPrice());
+                    } else {
+                        // print CNY stuff?
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("BitcoinCharts(): socket connection failed.  retry in one minute.");
+                try {
+                    br.close();
+                } catch (Exception ee) {
                 }
             }
-        } catch (Exception e) {
-            System.out.println("BitcoinCharts: io error " + e.getMessage());
+
             try {
-                br.close();
-            } catch (Exception ee) {
+                Thread.sleep(60000);    // wait a minute...
+            } catch(Exception e) {
             }
         }
     }

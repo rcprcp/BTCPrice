@@ -76,8 +76,7 @@ class BTCPrice extends JPanel {
     }
 
     public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
+
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
 
@@ -105,9 +104,9 @@ class BTCPrice extends JPanel {
                 // The documentation implies it's a public API, so
                 // i think the API's probably broken. On the other hand,
                 // maybe you need to authenticate to use the API?
-                final boolean IS_QUADRIGA_FIXED = false;
 
-                if(IS_QUADRIGA_FIXED) {
+                final boolean QUADRIGA_IS_FIXED = false;
+                if(QUADRIGA_IS_FIXED) {
                     QuadrigaAPI quadriga = new QuadrigaAPI();
                     quadriga.startProcess(table, model);
                 } else {
