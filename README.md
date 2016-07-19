@@ -6,6 +6,7 @@ Some of these prices come from various Bitcoin exchange public APIs, other price
 This program requires gson (tested with version 2.6.1), and Jsoup (tested with version 1.9.21).
 
 It also needs some work.  
-* the UI is not so nice - probably should delete some columns.  i was over optimistic about what data is available without accounts on the various exchanges.
+* the UI is not so nice - probably should delete some columns.  i was over optimistic about what data is available in the public APIs of the various exchanges.
 * we probably should find additional API-style data and not scrape web pages.  :)
-* need to implement the Kraken parser.
+* need to implement the Kraken parser (first version done).
+* we need refactoring.  there are some routines (like HTTP connection stuff which is duplicated all over the place.
