@@ -31,6 +31,8 @@ class MyTableModel extends AbstractTableModel {
                     new Double(0), new Double(0), new Double(0), new Double(0), new Double(0), new Double(0)},
             {"NAME", "TYPE", "TIME",
                     new Double(0), new Double(0), new Double(0), new Double(0), new Double(0), new Double(0)},
+            {"NAME", "TYPE", "TIME",
+                    new Double(0), new Double(0), new Double(0), new Double(0), new Double(0), new Double(0)},
     };
 
     public int getColumnCount() {

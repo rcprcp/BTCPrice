@@ -14,7 +14,8 @@ class BTCPrice extends JPanel {
     public static int ROW_GOOGLE = 3;
     public static int ROW_QUADRIGA = 4;
     public static int ROW_OKCOIN= 5;
-    public static int ROW_BING = 6;
+    public static int ROW_KRAKEN = 6;
+    public static int ROW_BING = 7;
 
 
     // column positions.
@@ -118,6 +119,9 @@ class BTCPrice extends JPanel {
 
                 OKCoin okcoin = new OKCoin();
                 okcoin.startProcess(table, model);
+
+                Kraken kraken = new Kraken();
+                kraken.startProcess(table, model);
             }
         });
      }
