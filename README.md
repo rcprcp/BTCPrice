@@ -14,4 +14,4 @@ It also needs some work.
 * we probably should find additional API-style data and not scrape web pages.  :)
 * need to implement the Kraken parser (first version done).
 * we need refactoring.
-** (somewhat fixed) like HTTP connection stuff is duplicated all over the place.
+  * (somewhat fixed) HTTP connection stuff is duplicated all over the place.
