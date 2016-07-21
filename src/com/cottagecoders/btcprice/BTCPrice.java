@@ -43,13 +43,12 @@ class BTCPrice extends JPanel {
         table = new JTable(model);
         table.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 20));
 
-        //remarkably ugly.
-        //table.getTableHeader().setForeground(Color.white);
-        //table.getTableHeader().setBackground(Color.black);
+        table.getTableHeader().setForeground(Color.darkGray);
+        table.getTableHeader().setBackground(Color.lightGray);
 
         table.setFont(new Font("Times New Roman", Font.BOLD, 16));
 
-        table.setPreferredScrollableViewportSize(new Dimension(900, 175));
+        table.setPreferredScrollableViewportSize(new Dimension(850, 150));
         table.setFillsViewportHeight(true);
 
         //Create the scroll pane and add the table to it.
