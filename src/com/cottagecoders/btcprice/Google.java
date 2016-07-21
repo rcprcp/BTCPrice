@@ -39,8 +39,8 @@ class Google implements DataProvider, Runnable {
             try {
 
                 Document doc = Jsoup.connect(url)
-                        .userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64)AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2")
-                        .timeout(10000)
+                        .userAgent(BTCPrice.USER_AGENT)
+                        .timeout(BTCPrice.JSOUP_TIMEOUT)
                         .get();
 
                 Elements metaItems = doc.select("[itemprop]");

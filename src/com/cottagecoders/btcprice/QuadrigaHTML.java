@@ -40,8 +40,10 @@ class QuadrigaHTML implements DataProvider, Runnable {
 
                 Document doc = null;
                 try {
-                    Thread.sleep(500);  //slow down!
-                    doc = Jsoup.connect(url).userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64)AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2").get();
+                    doc = Jsoup.connect(url)
+                            .userAgent(BTCPrice.USER_AGENT)
+                            .timeout(BTCPrice.JSOUP_TIMEOUT)
+                            .get();
                 } catch (Exception e) {
                     System.out.println("Jsoup exception: " + e.getMessage());
                     break;

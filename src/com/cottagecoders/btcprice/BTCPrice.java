@@ -5,6 +5,10 @@ import java.awt.*;
 
 class BTCPrice extends JPanel {
 
+    //declared here for Jsoup consistency.
+    public static final String USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64)AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2";
+    public static final int JSOUP_TIMEOUT = 10000;
+
     public static final boolean DEBUG = false;
     
     // mapping for rows in the table: 

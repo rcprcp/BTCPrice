@@ -3,13 +3,7 @@ package com.cottagecoders.btcprice;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,32 +27,12 @@ class Kraken implements DataProvider, Runnable {
         table.setValueAt("Spot", BTCPrice.ROW_KRAKEN, BTCPrice.COL_TYPE);
 
         String url = "https://api.kraken.com/0/public/Trades?pair=XBTUSD";
-//        String url = "https://api.kraken.com/0/public/AssetPairs";
+        MyHTTPRequest http = new MyHTTPRequest();
 
         while (true) {
             try {
 
-                InputStream ins;
-
-                URL myUrl = new URL(url);
-                if (url.toLowerCase().contains("https")) {
-                    HttpsURLConnection con = (HttpsURLConnection) myUrl.openConnection();
-                    ins = con.getInputStream();
-                } else {
-                    HttpURLConnection con = (HttpURLConnection) myUrl.openConnection();
-                    ins = con.getInputStream();
-                }
-                InputStreamReader isr = new InputStreamReader(ins);
-                BufferedReader in = new BufferedReader(isr);
-
-                String inputLine = "";
-                String response = "";
-                while ((inputLine = in.readLine()) != null) {
-                    response += inputLine;
-                }
-                in.close();
-
-//                System.out.println("Kraken(): returned JSON " + response);
+                String response = http.doRequest(url);
 
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 KrakenObj reply = gson.fromJson(response, KrakenObj.class);

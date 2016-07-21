@@ -3,13 +3,7 @@ package com.cottagecoders.btcprice;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,29 +30,12 @@ class OKCoin implements DataProvider, Runnable {
         table.setValueAt("Data", BTCPrice.ROW_OKCOIN, BTCPrice.COL_TYPE);
 
         String url = "https://www.okcoin.com/api/v1/trades.do?symbol=btc_usd";
+        MyHTTPRequest http = new MyHTTPRequest();
 
         while (true) {
             try {
 
-                InputStream ins;
-
-                URL myUrl = new URL(url);
-                if(url.toLowerCase().contains("https")) {
-                    HttpsURLConnection con = (HttpsURLConnection) myUrl.openConnection();
-                    ins = con.getInputStream();
-                } else {
-                    HttpURLConnection con = (HttpURLConnection) myUrl.openConnection();
-                    ins = con.getInputStream();
-                }
-                InputStreamReader isr = new InputStreamReader(ins);
-                BufferedReader in = new BufferedReader(isr);
-
-                String inputLine = "";
-                String response = "";
-                while ((inputLine = in.readLine()) != null) {
-                    response += inputLine;
-                }
-                in.close();
+                String response = http.doRequest(url);
 
                 Gson gson= new GsonBuilder().setPrettyPrinting().create();
                 OKCoinObject obj[] = gson.fromJson(response, OKCoinObject[].class);
