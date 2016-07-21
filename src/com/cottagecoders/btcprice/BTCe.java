@@ -2,13 +2,7 @@ package com.cottagecoders.btcprice;
 
 import com.google.gson.Gson;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,29 +29,10 @@ class BTCe implements DataProvider, Runnable {
         table.setValueAt("Data", BTCPrice.ROW_BTCE, BTCPrice.COL_TYPE);
 
         String url = "https://btc-e.com/api/3/ticker/btc_usd";
-
+        MyHTTPRequest http = new MyHTTPRequest();
         while (true) {
             try {
-
-                URL myUrl = new URL(url);
-                InputStream ins;
-                if (url.toLowerCase().contains("https")) {
-                    HttpsURLConnection con = (HttpsURLConnection) myUrl.openConnection();
-                    ins = con.getInputStream();
-                } else {
-                    HttpURLConnection con = (HttpURLConnection) myUrl.openConnection();
-                    ins = con.getInputStream();
-                }
-
-                InputStreamReader isr = new InputStreamReader(ins);
-                BufferedReader in = new BufferedReader(isr);
-
-                String inputLine = "";
-                String response = "";
-                while ((inputLine = in.readLine()) != null) {
-                    response += inputLine;
-                }
-                in.close();
+                String response = http.doRequest(url);
 
                 BTCeObj obj = new Gson().fromJson(response, BTCeObj.class);
 
