@@ -55,14 +55,14 @@ class QuadrigaAPI implements DataProvider, Runnable {
     }
 
     private class QuadrigaObject {
-        Double high;
-        Double low;
-        Double vwap;
-        Double volume;
-        Double last;
-        Double bid;
-        Double ask;
-        Long timestamp;
+        final Double high;
+        final Double low;
+        final Double vwap;
+        final Double volume;
+        final Double last;
+        final Double bid;
+        final Double ask;
+        final Long timestamp;
 
         private QuadrigaObject(Double high,
                                Double low,

@@ -4,7 +4,7 @@ import javax.swing.table.AbstractTableModel;
 
 class MyTableModel extends AbstractTableModel {
 
-    private String[] columnNames = {
+    private final String[] columnNames = {
             "Name",
             "Type",
             "Time",
@@ -16,7 +16,7 @@ class MyTableModel extends AbstractTableModel {
             "AskSize" };
 
     //column initializers.
-    private Object[][] data = {
+    private final Object[][] data = {
             {"NAME", "TYPE", "TIME",
                     new Double(0), new Double(0), new Double(0), new Double(0), new Double(0), new Double(0)},
             {"NAME", "TYPE", "TIME",

@@ -80,44 +80,26 @@ class Kraken implements DataProvider, Runnable {
         {
             this.error = error;
         }
-
-        @Override
-        public String toString()
-        {
-            return "ClassPojo [result = "+result+", error = "+error+"]";
-        }
     }
-    public class Result
-    {
+    public class Result {
         private String last;
 
         private String[][] XXBTZUSD;
 
-        public String getLast ()
-        {
+        public String getLast() {
             return last;
         }
 
-        public void setLast (String last)
-        {
+        public void setLast(String last) {
             this.last = last;
         }
 
-        public String[][] getXXBTZUSD ()
-        {
+        public String[][] getXXBTZUSD() {
             return XXBTZUSD;
         }
 
-        public void setXXBTZUSD (String[][] XXBTZUSD)
-        {
+        public void setXXBTZUSD(String[][] XXBTZUSD) {
             this.XXBTZUSD = XXBTZUSD;
         }
-
-        @Override
-        public String toString()
-        {
-            return "ClassPojo [last = "+last+", XXBTZUSD = "+XXBTZUSD+"]";
-        }
     }
-
 }

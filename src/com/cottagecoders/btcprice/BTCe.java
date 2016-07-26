@@ -51,16 +51,11 @@ class BTCe implements DataProvider, Runnable {
 
     public class BTCeObj
     {
-        private Btc_usd btc_usd;
+        private final Btc_usd btc_usd;
 
         public Btc_usd getBtc_usd ()
         {
             return btc_usd;
-        }
-
-        public void setBtc_usd (Btc_usd btc_usd)
-        {
-            this.btc_usd = btc_usd;
         }
 
         @Override

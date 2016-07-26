@@ -51,7 +51,7 @@ class CoinBase implements DataProvider, Runnable {
 
     public class Reply
     {
-        private Data data;
+        private final Data data;
 
         private Warnings[] warnings;
 
@@ -60,26 +60,6 @@ class CoinBase implements DataProvider, Runnable {
             return data;
         }
 
-        public void setData (Data data)
-        {
-            this.data = data;
-        }
-
-        public Warnings[] getWarnings ()
-        {
-            return warnings;
-        }
-
-        public void setWarnings (Warnings[] warnings)
-        {
-            this.warnings = warnings;
-        }
-
-        @Override
-        public String toString()
-        {
-            return "ClassPojo [data = "+data+", warnings = "+warnings+"]";
-        }
     }
 
 

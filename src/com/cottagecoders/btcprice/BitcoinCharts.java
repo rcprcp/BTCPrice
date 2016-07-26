@@ -78,11 +78,11 @@ class BitcoinCharts implements DataProvider, Runnable {
     }
 
     private class BitcoinChartsObject {
-        Double volume;
-        Long timestamp;
-        Double price;
-        String symbol;
-        Long id;
+        final Double volume;
+        final Long timestamp;
+        final Double price;
+        final String symbol;
+        final Long id;
 
         private BitcoinChartsObject(Double volume, Long timestamp, Double price, String symbol, Long id) {
             this.volume = volume;
@@ -90,10 +90,6 @@ class BitcoinCharts implements DataProvider, Runnable {
             this.price = price;
             this.symbol = symbol;
             this.id = id;
-        }
-
-        public Double getVolume() {
-            return volume;
         }
 
         public Long getTimestamp() {
@@ -108,8 +104,5 @@ class BitcoinCharts implements DataProvider, Runnable {
             return symbol;
         }
 
-        public Long getId() {
-            return id;
-        }
     }
 }

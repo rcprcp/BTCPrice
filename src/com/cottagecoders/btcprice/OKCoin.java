@@ -53,12 +53,12 @@ class OKCoin implements DataProvider, Runnable {
     }
 
     private class OKCoinObject {
-        Long date;
-        Long date_ms ;
-        Double price;
-        Double amount;
-        String tid;
-        String type;
+        final Long date;
+        final Long date_ms ;
+        final Double price;
+        final Double amount;
+        final String tid;
+        final String type;
 
         private OKCoinObject(
                 Long date,

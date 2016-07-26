@@ -12,14 +12,14 @@ class BTCPrice extends JPanel {
     public static final boolean DEBUG = false;
     
     // mapping for rows in the table: 
-    public static int ROW_COINBASE = 0;
-    public static int ROW_BITCOINCHARTS = 1;
-    public static int ROW_BTCE = 2;
-    public static int ROW_GOOGLE = 3;
-    public static int ROW_QUADRIGA = 4;
-    public static int ROW_OKCOIN= 5;
-    public static int ROW_KRAKEN = 6;
-    public static int ROW_BING = 7;
+    public static final int ROW_COINBASE = 0;
+    public static final int ROW_BITCOINCHARTS = 1;
+    public static final int ROW_BTCE = 2;
+    public static final int ROW_GOOGLE = 3;
+    public static final int ROW_QUADRIGA = 4;
+    public static final int ROW_OKCOIN= 5;
+    public static final int ROW_KRAKEN = 6;
+    public static final int ROW_BING = 7;
 
 
     // column positions.
@@ -27,19 +27,20 @@ class BTCPrice extends JPanel {
     public static final int COL_TYPE = 1;
     public static final int COL_TIME = 2;
     public static final int COL_TRADE = 3;
-    public static final int COL_BIDSIZE = 4;
+    // --Commented out by Inspection (7/26/2016 7:40 PM):public static final int COL_BIDSIZE = 4;
     public static final int COL_BID = 5;
-    public static final int COL_SPREAD = 6;
+    // --Commented out by Inspection (7/26/2016 7:40 PM):public static final int COL_SPREAD = 6;
     public static final int COL_ASK = 7;
-    public static final int COL_ASKSIZE = 8;
+    // --Commented out by Inspection (7/26/2016 7:40 PM):public static final int COL_ASKSIZE = 8;
 
-    static JTable table = null;
-    static MyTableModel model = null;
+    private static JTable table = null;
 
-    public BTCPrice() {
+    private BTCPrice() {
+
         super(new GridLayout(1, 0));
 
-        model = new MyTableModel();
+        MyTableModel model = new MyTableModel();
+
         table = new JTable(model);
         table.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 20));
 
@@ -67,7 +68,7 @@ class BTCPrice extends JPanel {
     private static void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("BitCoin Prices");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
         BTCPrice newContentPane = new BTCPrice();
