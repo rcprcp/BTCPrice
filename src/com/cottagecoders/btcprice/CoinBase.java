@@ -51,7 +51,7 @@ class CoinBase implements DataProvider, Runnable {
 
     public class Reply
     {
-        private final Data data;
+        Data data;
 
         private Warnings[] warnings;
 

@@ -51,7 +51,7 @@ class BTCe implements DataProvider, Runnable {
 
     public class BTCeObj
     {
-        private final Btc_usd btc_usd;
+        private Btc_usd btc_usd;
 
         public Btc_usd getBtc_usd ()
         {
