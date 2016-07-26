@@ -11,15 +11,13 @@ import java.util.Date;
 class CoinBase implements DataProvider, Runnable {
 
     static JTable table;
-    static MyTableModel model;
 
     public CoinBase() {
 
     }
 
-    public void startProcess(JTable table, MyTableModel model) {
-        this.table = table;
-        this.model = model;
+    public void startProcess(JTable tab) {
+        table = tab;
 
         Thread coinbase = new Thread(new CoinBase());
         coinbase.start();

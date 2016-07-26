@@ -9,16 +9,14 @@ import java.util.Date;
 
 class BTCe implements DataProvider, Runnable {
 
-    static JTable table;
-    static MyTableModel model;
+    private static JTable table;
 
     public BTCe() {
 
     }
 
-    public void startProcess(JTable table, MyTableModel model) {
-        this.table = table;
-        this.model = model;
+    public void startProcess(JTable tab) {
+        table = tab;
 
         Thread btce = new Thread(new BTCe());
         btce.start();

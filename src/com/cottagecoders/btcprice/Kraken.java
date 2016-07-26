@@ -10,12 +10,10 @@ import java.util.Date;
 
 class Kraken implements DataProvider, Runnable {
 
-    static JTable table;
-    static MyTableModel model;
+    private static JTable table;
 
-    public void startProcess(JTable table, MyTableModel model) {
-        this.table = table;
-        this.model = model;
+    public void startProcess(JTable tab) {
+        table = tab;
 
         Thread kraken = new Thread(new Kraken());
         kraken.start();

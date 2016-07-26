@@ -11,21 +11,16 @@ import java.util.Date;
 
 class Bing implements DataProvider, Runnable {
 
-    static int b = 1;
-    static int a = 100;
-
     private static final String URL = "http://www.bing.com/search?q=bitcoin+price";
 
-    static JTable table;
-    static MyTableModel model;
+    private static JTable table;
 
-    public Bing() {
+    Bing() {
 
     }
 
-    public void startProcess(JTable table, MyTableModel model) {
-        this.table = table;
-        this.model = model;
+    public void startProcess(JTable tab) {
+        table = tab;
 
         Thread bing = new Thread(new Bing());
         bing.start();

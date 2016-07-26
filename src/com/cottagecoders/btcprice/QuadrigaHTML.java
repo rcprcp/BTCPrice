@@ -12,16 +12,14 @@ import java.util.Date;
 
 class QuadrigaHTML implements DataProvider, Runnable {
 
-    static JTable table;
-    static MyTableModel model;
+    private static JTable table;
 
     QuadrigaHTML() {
 
     }
 
-    public void startProcess(JTable table, MyTableModel model) {
-        this.table = table;
-        this.model = model;
+    public void startProcess(JTable tab) {
+        table = tab;
 
         Thread quadriga = new Thread(new QuadrigaHTML());
         quadriga.start();
@@ -70,69 +68,6 @@ class QuadrigaHTML implements DataProvider, Runnable {
                 Thread.sleep(60000);
             } catch (Exception e) {
             }
-        }
-    }
-
-    private class QuadrigaObject {
-        Double high;
-        Double low;
-        Double vwap;
-        Double volume;
-        Double last;
-        Double bid;
-        Double ask;
-        Long timestamp;
-
-        private QuadrigaObject(Double high,
-                               Double low,
-                               Double vwap,
-                               Double volume,
-                               Double last,
-                               Double bid,
-                               Double ask,
-                               Long timestamp
-        ) {
-            this.high = high;
-            this.low = low;
-            this.vwap = vwap;
-            this.volume = volume;
-            this.last = last;
-            this.bid = bid;
-            this.ask = ask;
-            this.timestamp = timestamp;
-
-        }
-
-        public Double getHigh() {
-            return high;
-        }
-
-        public Double getLow() {
-            return low;
-        }
-
-        public Double getVwap() {
-            return vwap;
-        }
-
-        public Double getVolume() {
-            return volume;
-        }
-
-        public Double getLast() {
-            return last;
-        }
-
-        public Double getBid() {
-            return bid;
-        }
-
-        public Double getAsk() {
-            return ask;
-        }
-
-        public Long getTimestamp() {
-            return timestamp;
         }
     }
 }

@@ -12,18 +12,14 @@ import java.util.Date;
 
 class Google implements DataProvider, Runnable {
 
-    static int b = 1;
-    static int a = 100;
-    static JTable table;
-    static MyTableModel model;
+    private static JTable table;
 
     public Google() {
 
     }
 
-    public void startProcess(JTable table, MyTableModel model) {
-        this.table = table;
-        this.model = model;
+    public void startProcess(JTable tab) {
+        table = tab;
 
         Thread btce = new Thread(new Google());
         btce.start();
@@ -64,14 +60,14 @@ class Google implements DataProvider, Runnable {
                     }
                 }
 
-                /********************************
+                /*
                  table.setValueAt(obj.getSell(), BTCPrice.ROW_GOOGLE, BTCPrice.COL_BID);
                  table.setValueAt(obj.getBuy(), BTCPrice.ROW_GOOGLE, BTCPrice.COL_ASK);
 
                  Date dt = new Date(obj.getUpdated() * 1000);
                  DateFormat fmt = new SimpleDateFormat("HH:mm:ss");
                  table.setValueAt(fmt.format(dt), BTCPrice.ROW_GOOGLE, BTCPrice.COL_TIME);
-                 ***************************/
+                 */
                 Thread.sleep(20000);
             } catch (Exception e) {
                 e.printStackTrace();

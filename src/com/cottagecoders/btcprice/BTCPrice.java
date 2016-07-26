@@ -89,20 +89,20 @@ class BTCPrice extends JPanel {
                 // start other threads...
 
                 CoinBase coinbase = new CoinBase();
-                coinbase.startProcess(table, model);
+                coinbase.startProcess(table);
 
                 //Bing's data comes from coinBase anyway.
                 Bing bing = new Bing();
-                bing.startProcess(table, model);
+                bing.startProcess(table);
 
                 BitcoinCharts btc = new BitcoinCharts();
-                btc.startProcess(table, model);
+                btc.startProcess(table);
 
                 BTCe btce = new BTCe();
-                btce.startProcess(table, model);
+                btce.startProcess(table);
 
                 Google google = new Google();
-                google.startProcess(table, model);
+                google.startProcess(table);
 
                 // TODO: Quadriga API always returns 403.  :(
                 // The documentation implies it's a public API, so
@@ -112,19 +112,19 @@ class BTCPrice extends JPanel {
                 final boolean QUADRIGA_IS_FIXED = false;
                 if(QUADRIGA_IS_FIXED) {
                     QuadrigaAPI quadriga = new QuadrigaAPI();
-                    quadriga.startProcess(table, model);
+                    quadriga.startProcess(table);
                 } else {
                     // Anyway, strip the price off the main page of their
                     // site.
                     QuadrigaHTML quadriga = new QuadrigaHTML();
-                    quadriga.startProcess(table, model);
+                    quadriga.startProcess(table);
                 }
 
                 OKCoin okcoin = new OKCoin();
-                okcoin.startProcess(table, model);
+                okcoin.startProcess(table);
 
                 Kraken kraken = new Kraken();
-                kraken.startProcess(table, model);
+                kraken.startProcess(table);
             }
         });
      }

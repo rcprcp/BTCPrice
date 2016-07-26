@@ -12,18 +12,14 @@ import java.util.Date;
 
 class BitcoinCharts implements DataProvider, Runnable {
 
-    static int b = 1;
-    static int a = 100;
-    static JTable table;
-    static MyTableModel model;
+    private static JTable table;
 
     public BitcoinCharts() {
 
     }
 
-    public void startProcess(JTable table, MyTableModel model) {
-        this.table = table;
-        this.model = model;
+    public void startProcess(JTable tab) {
+        table = tab;
 
         Thread bitcoinCharts = new Thread(new BitcoinCharts());
         bitcoinCharts.start();

@@ -4,5 +4,5 @@ import javax.swing.*;
 
 interface  DataProvider {
 
-    void startProcess(JTable table, MyTableModel model);
+    void startProcess(JTable table);
 }

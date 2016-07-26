@@ -7,9 +7,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by bob on 7/21/2016.
- */
 class MyHTTPRequest {
 
     MyHTTPRequest() {
@@ -41,11 +38,7 @@ class MyHTTPRequest {
         } catch(Exception e) {
             throw e;
         } finally {
-            try {
-                input.close();
-            } catch (Exception e) {
-                throw e;
-            }
+            input.close();
         }
 
         return response;
