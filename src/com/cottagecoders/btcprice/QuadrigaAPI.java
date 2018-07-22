@@ -23,8 +23,8 @@ class QuadrigaAPI implements DataProvider, Runnable {
   }
 
   public void run() {
-    table.setValueAt("QuadrigaAPI", BTCPrice.ROW_QUADRIGA, BTCPrice.COL_NAME);
-    table.setValueAt("Data", BTCPrice.ROW_QUADRIGA, BTCPrice.COL_TYPE);
+    table.setValueAt("QuadrigaAPI", BTCPrice.ROW_QUADRIGA_API, BTCPrice.COL_NAME);
+    table.setValueAt("Data", BTCPrice.ROW_QUADRIGA_API, BTCPrice.COL_TYPE);
 
     String url = "https://api.quadrigacx.com/v2/ticker?book=btc_usd";
     MyHTTPRequest http = new MyHTTPRequest();
@@ -38,7 +38,7 @@ class QuadrigaAPI implements DataProvider, Runnable {
 
         Date dt = new Date(obj.getTimestamp() * 1000);
         DateFormat fmt = new SimpleDateFormat("HH:mm:ss");
-        table.setValueAt(fmt.format(dt), BTCPrice.ROW_QUADRIGA, BTCPrice.COL_TIME);
+        table.setValueAt(fmt.format(dt), BTCPrice.ROW_QUADRIGA_API, BTCPrice.COL_TIME);
 
       } catch (Exception e) {
         e.printStackTrace();

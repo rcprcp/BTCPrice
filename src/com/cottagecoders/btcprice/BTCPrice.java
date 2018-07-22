@@ -17,9 +17,10 @@ class BTCPrice extends JPanel {
   public static final int ROW_BITCOINCHARTS = 1;
   public static final int ROW_GOOGLE = 2;
   public static final int ROW_BING = 3;
-  public static final int ROW_QUADRIGA = 4;
-  public static final int ROW_OKCOIN = 5;
-  public static final int ROW_KRAKEN = 6;
+  public static final int ROW_OKCOIN = 4;
+  public static final int ROW_KRAKEN = 5;
+  public static final int ROW_QUADRIGA_HTML = 6;
+  public static final int ROW_QUADRIGA_API = 7;
 
   // column positions.
   public static final int COL_NAME = 0;
@@ -82,7 +83,6 @@ class BTCPrice extends JPanel {
         createAndShowGUI();
 
         // start other threads...
-
         CoinBase coinbase = new CoinBase();
         coinbase.startProcess(table);
 
@@ -101,16 +101,13 @@ class BTCPrice extends JPanel {
         // i think the API's probably broken. On the other hand,
         // maybe you need to authenticate to use the API?
 
-        final boolean QUADRIGA_IS_FIXED = false;
-        if (QUADRIGA_IS_FIXED) {
-          QuadrigaAPI quadriga = new QuadrigaAPI();
-          quadriga.startProcess(table);
-        } else {
-          // Anyway, strip the price off the main page of their
-          // site.
-          QuadrigaHTML quadriga = new QuadrigaHTML();
-          quadriga.startProcess(table);
-        }
+        QuadrigaAPI quadrigaApi = new QuadrigaAPI();
+        quadrigaApi.startProcess(table);
+
+        // Anyway, strip the price off the main page of their
+        // site.
+        QuadrigaHTML quadrigaHTML = new QuadrigaHTML();
+        quadrigaHTML.startProcess(table);
 
         OKCoin okcoin = new OKCoin();
         okcoin.startProcess(table);

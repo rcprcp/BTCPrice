@@ -26,8 +26,8 @@ class QuadrigaHTML implements DataProvider, Runnable {
     }
 
     public void run() {
-        table.setValueAt("QuadrigaHTML", BTCPrice.ROW_QUADRIGA, BTCPrice.COL_NAME);
-        table.setValueAt("Data", BTCPrice.ROW_QUADRIGA, BTCPrice.COL_TYPE);
+        table.setValueAt("QuadrigaHTML", BTCPrice.ROW_QUADRIGA_HTML, BTCPrice.COL_NAME);
+        table.setValueAt("Data", BTCPrice.ROW_QUADRIGA_HTML, BTCPrice.COL_TYPE);
 
         String url = "https://www.quadrigacx.com";
 
@@ -53,11 +53,11 @@ class QuadrigaHTML implements DataProvider, Runnable {
                 if(items.size() > 1) {
                     price = Double.parseDouble(items.get(0) .toString().replaceAll("[^0-9.]", ""));
                 }
-                table.setValueAt(price, BTCPrice.ROW_QUADRIGA, BTCPrice.COL_TRADE);
+                table.setValueAt(price, BTCPrice.ROW_QUADRIGA_HTML, BTCPrice.COL_TRADE);
 
                 Date dt = new Date(System.currentTimeMillis());
                 DateFormat fmt = new SimpleDateFormat("HH:mm:ss");
-                table.setValueAt(fmt.format(dt), BTCPrice.ROW_QUADRIGA, BTCPrice.COL_TIME);
+                table.setValueAt(fmt.format(dt), BTCPrice.ROW_QUADRIGA_HTML, BTCPrice.COL_TIME);
 
 
             } catch (Exception e) {
